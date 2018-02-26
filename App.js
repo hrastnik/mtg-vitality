@@ -10,7 +10,7 @@ import {
   TouchableHighlight,
   StatusBar
 } from "react-native";
-import { Font } from "expo";
+import { Font, KeepAwake } from "expo";
 
 const backgroundColors = [
   "#2c2c2c",
@@ -196,6 +196,11 @@ export default class App extends React.Component {
       }
     );
     StatusBar.setHidden(true);
+    KeepAwake.activate();
+  }
+
+  componentDidUnmount() {
+    KeepAwake.deactivate();
   }
 
   _handlePlayer1PointUpdate = points => {
